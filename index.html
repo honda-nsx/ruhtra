@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noarchive, noindex">
+<title>Ruhtra's Site</title>
+<style>
+/* Pastel blue color palette */
+:root {
+  --bg: #83c2ff; /* darker blue to cover most of the page */
+  --panel: #cde7f0;
+  --text: #0b3d91;
+  --neon1: #89c2f0;
+  --neon2: #a1d6ff;
+  --link: #0b3d91;
+}
+body {
+  margin:0;
+  font-family:'Courier New',Courier,monospace;
+  background: var(--bg) url('anima_blue.gif') repeat fixed;
+  background-size: 150px; /* keep small portion of star background visible */
+  color: var(--text);
+  line-height:1.3;
+}
+.page {
+  width:820px;
+  margin:18px auto;
+  border:4px ridge #a3c1d9;
+  background: var(--panel);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+}
+header {
+  padding:12px;
+  background: linear-gradient(90deg,var(--neon2),var(--neon1));
+  color:#0b3d91;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:3px groove #b0d4eb;
+}
+header h1 { margin:0;font-size:28px;text-shadow:1px 1px 0 #fff; }
+.content { display:flex;gap:12px;padding:12px; }
+.maincol { flex:1; background: var(--panel); padding:12px; border:3px inset #b0d4eb; }
+.box { border:2px solid #a3c1d9; padding:8px; margin-bottom:10px; background: #cde7f0; }
+.blink{animation: blink 1s steps(1,start) infinite;}
+@keyframes blink{50%{visibility:hidden}}
+.neon{font-weight:700;font-size:20px;background:linear-gradient(90deg,var(--neon1),var(--neon2));-webkit-background-clip:text;color:transparent;}
+.avatar{width:96px;height:96px;border:2px solid #a3c1d9;display:block;margin-bottom:8px;}
+.counter{font-weight:bold;font-size:18px;}
+footer{padding:8px;text-align:center;font-size:12px;color:var(--text);border-top:2px groove #b0d4eb;background:var(--panel);}
+.btn{display:inline-block;padding:6px 10px;border:none;background:linear-gradient(#e0f7ff,#cde7f0);text-decoration:none;color:var(--text);font-weight:700;}
+.retro-button{margin:4px;display:inline-block;border:none;}
+@media (max-width:900px){.page{width:96%;}.content{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<img src="pfp.jpg" alt="Ruhtra" width="48" height="48" style="border:2px groove #a3c1d9; background:#cde7f0;">
+<div>
+<h1>Ruhtra's Site</h1>
+<div style="font-size:12px;">A lovingly-made throwback to the early web: gifs, counters included</div>
+</div>
+</header>
+<div class="content">
+<div class="maincol">
+<div class="box">
+<h2 class="neon">Featured</h2>
+<p>Welcome to Ruhtra's corner of the web! Explore my passion for retro tech, outdoor adventures, and classic cars.
+I hope you enjoy viewing this site as much as I do. It took a lot of missed sleep and coca cola :D</p>
+<div style="display:flex;gap:12px;align-items:center;">
+<img class="avatar" src="pfp.jpg" alt="Ruhtra">
+<div>
+<div>Owner: <strong>Ruhtra</strong></div>
+<div class="badge">Online Badge: <span style="color:green">●</span> Active</div>
+<div class="counter" id="hitCounter">Hits: 312</div>
+</div>
+</div>
+</div>
+<div class="box" id="about">
+<h3 class="neon">About Me</h3>
+<p>Hi! I'm Ruhtra. I love old technology, camping, fishing, and cars. This site reflects my interests and my nostalgia for the early web.</p>
+</div>
+<div class="box" id="links">
+<h3 class="neon">My Links</h3>
+<table cellpadding="6" cellspacing="0" style="border-collapse:collapse; width:100%">
+<tr style="background:#cde7f0">
+<td style="width:40%"><a href="https://github.com/honda-nsx" target="_blank">My GitHub</a></td>
+<td style="width:60%">Check out my projects and repositories.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<footer>
+<div>Made with ❤ by Ruhtra — <span class="blink">Under Construction</span></div>
+<!-- Retro buttons at the bottom -->
+<div>
+<a href="#" class="retro-button"><img src="17.gif" alt="17"></a>
+<a href="#" class="retro-button"><img src="chill_pill.gif" alt="Chill Pill"></a>
+<a href="#" class="retro-button"><img src="noteoth2.gif" alt="Noteoth2"></a>
+<a href="#" class="retro-button"><img src="tj88x31.gif" alt="TJ88x31"></a>
+</div>
+<div style="font-size:11px; margin-top:6px">Last updated: Dec 10, 2025</div>
+</footer>
+<script>
+// hits counter starting at 312 that increments every 10-20 seconds
+let hits = 312;
+localStorage.setItem('hitCount', hits);
+const counterEl = document.getElementById('hitCounter');
+if (counterEl) { counterEl.textContent = 'Hits: ' + hits; }
+
+function incrementHits() {
+  hits = Number(hits) + 1;
+  localStorage.setItem('hitCount', hits);
+  if (counterEl) counterEl.textContent = 'Hits: ' + hits;
+  let delay = Math.floor(Math.random() * 11000) + 10000; // 10-21 seconds
+  setTimeout(incrementHits, delay);
+}
+setTimeout(incrementHits, Math.floor(Math.random() * 11000) + 10000);
+</script>
+</div>
+</body>
+</html>
